@@ -18,6 +18,18 @@ export default function ControlledForm() {
     })
 
     const [submitted, setSubmitted] = useState(false)
+    const[showData, setShowData]= useState({
+        firstName : '',
+        lastName: '',
+        email: '',
+        phone: '',
+        profession:'',
+        userName: '',
+        gender:'male',
+        address: '',
+        website: '',
+        password:'',
+    })
     
     const [errors, setErrors] = useState({
         firstName : '',
@@ -133,6 +145,7 @@ export default function ControlledForm() {
         if (isError) return
 
         setSubmitted(true)
+        setShowData(userData)
         setUserData({
             firstName : '',
             lastName: '',
@@ -256,25 +269,25 @@ export default function ControlledForm() {
     </div>
     <div className="outPut">
         <div>
-            <div className="fullName">
+            <div className="fullName outPut-inner-div">
                 <h4>Full Name</h4>
-                {submitted && <p>{firstName + ' ' + lastName}</p>}
+                {submitted && <p>{showData.firstName +' '+ showData.lastName }</p>}
             </div>
-            <div className="website">
+            <div className="website outPut-inner-div">
                 <h4>Website</h4>
-                {submitted && <a href={website}>Clicck Here</a> }
+                {submitted && <a href={showData.website}>Clicck Here</a> }
             </div>
-            <div className="phone">
+            <div className="phone outPut-inner-div">
                 <h4>Phone Number</h4>
-                {submitted && <p>{phone}</p>}
+                {submitted && <p>{showData.phone}</p>}
             </div>
-            <div className="email">
+            <div className="email outPut-inner-div">
                 <h4>Email</h4>
-                {submitted && <p>{email}</p>}
+                {submitted && <p>{showData.email}</p>}
             </div>
-            <div className="address">
+            <div className="address outPut-inner-div">
                 <h4>Address</h4>
-                {submitted && <p>{address}</p>}
+                {submitted && <p>{showData.address}</p>}
             </div>
         </div>
     </div>
